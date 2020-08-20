@@ -1,0 +1,66 @@
+commit 9c41f2c17a8a62b5f26245e25a594a53b35f65ee
+Author: Tom Hughes <tom@compton.nu>
+Date:   Sun Sep 30 18:33:57 2018 +0100
+
+    Patch out use of function.prototype.name
+
+diff --git a/test/es2015.js b/test/es2015.js
+index 80f4083..c172e99 100644
+--- a/test/es2015.js
++++ b/test/es2015.js
+@@ -4,7 +4,6 @@ var test = require('tape');
+ var toPrimitive = require('../es2015');
+ var is = require('object-is');
+ var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+ var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+@@ -12,7 +11,7 @@ var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });
+diff --git a/test/es5.js b/test/es5.js
+index 8b80ff5..a5352cf 100644
+--- a/test/es5.js
++++ b/test/es5.js
+@@ -4,12 +4,11 @@ var test = require('tape');
+ var toPrimitive = require('../es5');
+ var is = require('object-is');
+ var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });
+diff --git a/test/es6.js b/test/es6.js
+index c6df63f..21bfecc 100644
+--- a/test/es6.js
++++ b/test/es6.js
+@@ -4,7 +4,6 @@ var test = require('tape');
+ var toPrimitive = require('../es6');
+ var is = require('object-is');
+ var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+ var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+@@ -12,7 +11,7 @@ var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });

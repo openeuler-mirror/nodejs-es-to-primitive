@@ -1,0 +1,4 @@
+version_control: github
+src_repo: ljharb/es-to-primitive
+tag_prefix: "^"
+seperator: "."
