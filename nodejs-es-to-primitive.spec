@@ -1,7 +1,7 @@
 %{?nodejs_find_provides_and_requires}
 Name:                nodejs-es-to-primitive
 Version:             1.2.0
-Release:             2
+Release:             3
 Summary:             ECMAScript “ToPrimitive” algorithm
 License:             MIT
 URL:                 https://github.com/ljharb/es-to-primitive
@@ -33,7 +33,7 @@ cp -pr package.json index.js es5.js es6.js es2015.js helpers %{buildroot}%{nodej
 
 %check
 %nodejs_symlink_deps --check
-%{__nodejs} --harmony --es-staging test/index.js
+%{__nodejs} --harmony  test/index.js
 
 %files
 %doc README.md CHANGELOG.md
@@ -41,6 +41,9 @@ cp -pr package.json index.js es5.js es6.js es2015.js helpers %{buildroot}%{nodej
 %{nodejs_sitelib}/es-to-primitive
 
 %changelog
+* Wed Mar 02 2022 Yongqing chen <chenyongqingdl@gmail.com> - 1.2.0-3
+- Delete --es-staging option 
+
 * Thu 26 Nov 2020 leiju <leiju4@huawei.com> - 1.2.0-2
 - delete nodejs-es-to-primitive.spec.old redundancy file
 
